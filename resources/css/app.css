@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+ul.sidebar-collapse a {
+    @apply pl-9;
+}
