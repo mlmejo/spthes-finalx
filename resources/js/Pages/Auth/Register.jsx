@@ -12,7 +12,7 @@ export default function Register({ forAdmin }) {
     email: "",
     password: "",
     password_confirmation: "",
-    role: `${forAdmin ? "admin" : ""}`,
+    role: `${forAdmin ? "admin" : "student"}`,
   });
 
   useEffect(() => {
@@ -105,6 +105,48 @@ export default function Register({ forAdmin }) {
 
           <InputError message={errors.password_confirmation} className="mt-2" />
         </div>
+
+        {!forAdmin && (
+          <>
+            <div className="mt-4 flex">
+              <div className="mr-4 flex items-center">
+                <input
+                  type="radio"
+                  name="role"
+                  id="student"
+                  value="student"
+                  onChange={(e) => setData("role", e.target.value)}
+                  className="h-4 w-4 border-gray-300 bg-gray-100 text-indigo-500 focus:ring-2 focus:ring-indigo-500"
+                  checked={data.role === "student"}
+                />
+                <label
+                  htmlFor="student"
+                  className="ml-2 text-sm font-medium text-gray-700"
+                >
+                  Student
+                </label>
+              </div>
+              <div className="mr-4 flex items-center">
+                <input
+                  type="radio"
+                  name="role"
+                  id="teacher"
+                  value="teacher"
+                  onChange={(e) => setData("role", e.target.value)}
+                  className="w4 h-4 border-gray-300 bg-gray-100 text-indigo-500 focus:ring-2 focus:ring-indigo-500"
+                  checked={data.role === "teacher"}
+                />
+                <label
+                  htmlFor="teacher"
+                  className="ml-2 text-sm font-medium text-gray-700"
+                >
+                  Teacher
+                </label>
+              </div>
+            </div>
+            <InputError message={errors.role} className="mt-2 block" />
+          </>
+        )}
 
         <div className="mt-4 flex items-center justify-end">
           {!forAdmin && (

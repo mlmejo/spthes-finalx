@@ -60,4 +60,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/register/admin', RegisteredAdminController::class)
+    ->middleware('check.admin')
     ->name('register.admin');

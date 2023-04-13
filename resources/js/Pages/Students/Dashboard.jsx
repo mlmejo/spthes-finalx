@@ -1,9 +1,9 @@
-import AdminLayout from "@/Layouts/AdminLayout";
+import StudentLayout from "@/Layouts/StudentLayout";
 import { Head } from "@inertiajs/react";
 
 export default function Dashboard({ auth }) {
   return (
-    <AdminLayout
+    <StudentLayout
       auth={auth}
       header={
         <h2 className="text-xl font-semibold leading-tight text-gray-800">
@@ -20,6 +20,6 @@ export default function Dashboard({ auth }) {
           </div>
         </div>
       </div>
-    </AdminLayout>
+    </StudentLayout>
   );
 }

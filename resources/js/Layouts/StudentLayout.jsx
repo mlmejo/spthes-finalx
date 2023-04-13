@@ -9,13 +9,11 @@ import {
 } from "@heroicons/react/20/solid";
 import Authenticated from "./AuthenticatedLayout";
 
-export default function Admin({ auth, children }) {
-  const role = auth.user.role;
-
+export default function Student({ auth, children }) {
   return (
     <Authenticated user={auth.user}>
       <div className="flex">
-        <Sidebar role="Administrator">
+        <Sidebar role="Student">
           <Sidebar.Item href={route("dashboard")} icon={HomeIcon}>
             Dashboard
           </Sidebar.Item>

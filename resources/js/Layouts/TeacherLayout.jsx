@@ -1,42 +1,45 @@
 import Sidebar from "@/Components/Sidebar";
 import {
+  ArrowPathIcon,
   BuildingOfficeIcon,
   CircleStackIcon,
+  EyeIcon,
   HomeIcon,
-  PencilSquareIcon,
+  PlusIcon,
   UserGroupIcon,
-  ArrowPathIcon,
 } from "@heroicons/react/20/solid";
 import Authenticated from "./AuthenticatedLayout";
 
-export default function Admin({ auth, children }) {
+export default function Teacher({ auth, children }) {
   const role = auth.user.role;
 
   return (
     <Authenticated user={auth.user}>
       <div className="flex">
-        <Sidebar role="Administrator">
-          <Sidebar.Item href={route("dashboard")} icon={HomeIcon}>
+        <Sidebar role="Teacher">
+          <Sidebar.Item
+            href={route("dashboard")}
+            active={route().current("dashboard")}
+            icon={HomeIcon}
+          >
             Dashboard
           </Sidebar.Item>
 
-          <Sidebar.Collapse icon={CircleStackIcon} label="Data">
+          <Sidebar.Collapse icon={CircleStackIcon} label="Records Data">
             <Sidebar.Item href="#" icon={UserGroupIcon}>
-              Accounts
+              Student Accounts
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={BuildingOfficeIcon}>
               Sections
+            </Sidebar.Item>
+            <Sidebar.Item href="#" icon={EyeIcon}>
+              View Takers
             </Sidebar.Item>
           </Sidebar.Collapse>
 
-          <Sidebar.Collapse icon={PencilSquareIcon} label="Create">
-            <Sidebar.Item href="#" icon={UserGroupIcon}>
-              Accounts
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={BuildingOfficeIcon}>
-              Sections
-            </Sidebar.Item>
-          </Sidebar.Collapse>
+          <Sidebar.Item href="#" icon={PlusIcon}>
+            Add Data
+          </Sidebar.Item>
 
           <Sidebar.Item href="#" icon={ArrowPathIcon}>
             Activity Log

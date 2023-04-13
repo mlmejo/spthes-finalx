@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\Role;
 use App\Models\User;
 use Closure;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,7 +18,9 @@ class CheckAdminUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $adminCount = User::has('roles', 'admin')->count();
+        $adminCount = User::whereHas('roles', function (Builder $query) {
+            $query->where('name', Role::ADMIN->value);
+        })->count();
 
         if ($adminCount > 0) {
             return redirect()->route('login');
