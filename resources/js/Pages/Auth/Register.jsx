@@ -12,6 +12,7 @@ export default function Register({ forAdmin }) {
     email: "",
     password: "",
     password_confirmation: "",
+    role: `${forAdmin ? "admin" : ""}`,
   });
 
   useEffect(() => {
@@ -28,10 +29,10 @@ export default function Register({ forAdmin }) {
 
   return (
     <GuestLayout>
-      <Head title="Register" />
+      <Head title={forAdmin ? "Administrator Registration" : "Register"} />
 
       {forAdmin && (
-        <p className="mb-2 text-gray-700">Create administrator account</p>
+        <h1 className="mb-4 text-gray-700">Create an administrator account</h1>
       )}
       <form onSubmit={submit}>
         <div>

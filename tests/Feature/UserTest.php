@@ -13,7 +13,7 @@ class UserTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
-    public function testRoleManagement()
+    public function test_role_management_methods()
     {
         $role = Role::create(['name' => 'admin']);
 

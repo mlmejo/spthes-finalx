@@ -59,9 +59,5 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 });
 
-Route::middleware('check.admin')->group(function () {
-    Route::get('/register/admin', [RegisteredAdminController::class, 'create'])
-        ->name('register.admin');
-
-    Route::post('/register/admin', [RegisteredAdminController::class, 'store']);
-});
+Route::get('/register/admin', RegisteredAdminController::class)
+    ->name('register.admin');
