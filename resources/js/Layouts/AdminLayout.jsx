@@ -16,7 +16,11 @@ export default function Admin({ auth, children }) {
     <Authenticated user={auth.user}>
       <div className="flex">
         <Sidebar role="Administrator">
-          <Sidebar.Item href={route("dashboard")} icon={HomeIcon}>
+          <Sidebar.Item
+            href={route("dashboard")}
+            active={route().current("dashboard")}
+            icon={HomeIcon}
+          >
             Dashboard
           </Sidebar.Item>
 
@@ -24,7 +28,11 @@ export default function Admin({ auth, children }) {
             <Sidebar.Item href="#" icon={UserGroupIcon}>
               Accounts
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={BuildingOfficeIcon}>
+            <Sidebar.Item
+              href={route("sections.index")}
+              active={route().current("sections.index")}
+              icon={BuildingOfficeIcon}
+            >
               Sections
             </Sidebar.Item>
           </Sidebar.Collapse>
@@ -33,7 +41,11 @@ export default function Admin({ auth, children }) {
             <Sidebar.Item href="#" icon={UserGroupIcon}>
               Accounts
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={BuildingOfficeIcon}>
+            <Sidebar.Item
+              href={route("sections.create")}
+              active={route().current("sections.create")}
+              icon={BuildingOfficeIcon}
+            >
               Sections
             </Sidebar.Item>
           </Sidebar.Collapse>

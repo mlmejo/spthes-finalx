@@ -19,7 +19,7 @@ class CheckAdminUser
     public function handle(Request $request, Closure $next): Response
     {
         $adminCount = User::whereHas('roles', function (Builder $query) {
-            $query->where('name', Role::ADMIN->value);
+            $query->where('name', Role::Admin->value);
         })->count();
 
         if ($adminCount > 0) {

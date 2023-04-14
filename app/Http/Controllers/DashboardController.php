@@ -13,11 +13,11 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        if ($request->user()->hasRole(Role::ADMIN->value)) {
+        if ($request->user()->hasRole(Role::Admin->value)) {
             return Inertia::render('Admin/Dashboard');
-        } else if ($request->user()->hasRole(Role::STUDENT->value)) {
+        } else if ($request->user()->hasRole(Role::Student->value)) {
             return Inertia::render('Students/Dashboard');
-        } else if ($request->user()->hasRole(Role::TEACHER->value)) {
+        } else if ($request->user()->hasRole(Role::Teacher->value)) {
             return Inertia::render('Teachers/Dashboard');
         }
     }

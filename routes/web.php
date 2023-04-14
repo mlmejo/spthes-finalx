@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcademicLevelApiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -28,4 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/academic_levels', AcademicLevelApiController::class)
+    ->middleware('auth')
+    ->name('academic_levels.index');
+
+require __DIR__ . '/admin.php';
 require __DIR__ . '/auth.php';

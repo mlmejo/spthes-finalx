@@ -7,7 +7,7 @@ const Sidebar = ({ role, children }) => {
       aria-label="Sidebar"
     >
       <div className="h-full overflow-y-auto bg-white px-3 py-4">
-        <h1 className="mb-4 rounded border bg-indigo-900 p-2 text-center text-sm font-medium text-white">
+        <h1 className="mb-4 rounded border bg-gray-800 p-2 text-center text-sm font-medium text-white">
           {role}
         </h1>
         <ul className="space-y-2 text-sm font-medium">{children}</ul>
@@ -27,8 +27,8 @@ const Item = ({ href, active, icon, children }) => {
           "group flex items-center rounded-lg p-2 align-middle " +
           `${
             active
-              ? "bg-indigo-700 text-white hover:text-gray-900"
-              : "text-gray-900 hover:bg-indigo-700 hover:text-white"
+              ? "bg-gray-800 text-white hover:text-gray-900"
+              : "text-gray-900 hover:bg-gray-800 hover:text-white"
           }`
         }
       >
@@ -49,7 +49,7 @@ const Collapse = ({ icon, label, children }) => {
 
   return (
     <>
-      <li className="group flex flex-wrap items-center rounded-lg p-2 align-middle text-gray-900 hover:bg-indigo-700 hover:text-white">
+      <li className="group flex flex-wrap items-center rounded-lg p-2 align-middle text-gray-900 hover:bg-gray-800 hover:text-white">
         <Icon className="h-5 w-5 text-gray-500 group-hover:text-white" />
         <span className="ml-3">{label}</span>
         <ChevronDownIcon className="ml-auto h-5 w-5 text-gray-500 group-hover:text-white" />
