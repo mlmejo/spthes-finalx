@@ -8,17 +8,14 @@ use Illuminate\Http\Request;
 
 class AcademicLevelApiController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
-        $jhs = AcademicLevel::where('tier', AcademicTier::JuniorHigh)
-            ->get();
+        $academic_levels = [];
 
-        $shs = AcademicLevel::where('tier', AcademicTier::SeniorHigh)
-            ->get();
+        foreach (array_column(AcademicTier::cases(), 'value') as $tier) {
+            $academic_levels[$tier] = AcademicLevel::where('tier', $tier)->get();
+        }
 
-        $college = AcademicLevel::where('tier', AcademicTier::College)
-            ->get();
-
-        return response()->json(compact('jhs', 'shs', 'college'));
+        return response()->json([...$academic_levels]);
     }
 }

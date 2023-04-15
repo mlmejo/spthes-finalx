@@ -25,7 +25,7 @@ export default function Admin({ auth, children }) {
           </Sidebar.Item>
 
           <Sidebar.Collapse icon={CircleStackIcon} label="Data">
-            <Sidebar.Item href="#" icon={UserGroupIcon}>
+            <Sidebar.Item href={route("students.index")} icon={UserGroupIcon}>
               Accounts
             </Sidebar.Item>
             <Sidebar.Item
@@ -38,7 +38,14 @@ export default function Admin({ auth, children }) {
           </Sidebar.Collapse>
 
           <Sidebar.Collapse icon={PencilSquareIcon} label="Create">
-            <Sidebar.Item href="#" icon={UserGroupIcon}>
+            <Sidebar.Item
+              href={route("students.create")}
+              active={
+                route().current("students.create") ||
+                route().current("teachers.create")
+              }
+              icon={UserGroupIcon}
+            >
               Accounts
             </Sidebar.Item>
             <Sidebar.Item

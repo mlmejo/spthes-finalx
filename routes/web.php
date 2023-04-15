@@ -3,9 +3,9 @@
 use App\Http\Controllers\AcademicLevelApiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\SectionTeacherController;
+use App\Http\Controllers\TeacherApiController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +29,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/academic_levels', AcademicLevelApiController::class)
+Route::group([
+    'prefix' => 'api',
+    'as' => 'api.',
+    'middleware' => 'auth'
+], function () {
+    Route::resource('academic_levels', AcademicLevelApiController::class);
+    Route::resource('teachers', TeacherApiController::class);
+});
+
+Route::post('sections/{section}/teachers', [SectionTeacherController::class, 'store'])
+    ->prefix('admin')
     ->middleware('auth')
-    ->name('academic_levels.index');
+    ->name('sections.teachers.store');
+
+Route::get('/teachers/{teacher}/sections', [SectionTeacherController::class, 'index'])
+    ->middleware('auth')
+    ->name('teachers.sections.index');
 
 require __DIR__ . '/admin.php';
 require __DIR__ . '/auth.php';

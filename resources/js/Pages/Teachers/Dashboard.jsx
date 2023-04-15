@@ -1,10 +1,11 @@
 import TeacherLayout from "@/Layouts/TeacherLayout";
 import { Head } from "@inertiajs/react";
 
-export default function Dashboard({ auth }) {
+export default function Dashboard({ auth, teacher }) {
   return (
     <TeacherLayout
       auth={auth}
+      teacher={teacher}
       header={
         <h2 className="text-xl font-semibold leading-tight text-gray-800">
           Dashboard

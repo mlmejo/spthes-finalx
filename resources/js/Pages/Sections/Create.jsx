@@ -20,17 +20,17 @@ export default function Create({ auth }) {
   const change = (option) => {
     setData("academic_level_id", option.value);
     setSelected(option);
-  }
+  };
 
   const submit = (e) => {
     e.preventDefault();
 
     post(route("sections.store"));
-  }
+  };
 
   useEffect(() => {
     axios
-      .get(route("academic_levels.index"))
+      .get(route("api.academic_levels.index"))
       .then((response) => {
         setOptions([
           {
@@ -77,12 +77,13 @@ export default function Create({ auth }) {
                 Create Section
               </h2>
             </header>
-            <form onSubmit={submit} className="mt-6 space-y-6">
+            <form onSubmit={submit} className="mt-4 space-y-4">
               <div className="max-w-xl">
                 <InputLabel htmlFor="name" value="Name" />
 
                 <TextInput
                   id="name"
+                  name="name"
                   className="mt-1 block w-full"
                   value={data.name}
                   onChange={(e) => setData("name", e.target.value)}
@@ -94,12 +95,14 @@ export default function Create({ auth }) {
               </div>
 
               <div className="max-w-xl">
+                <InputLabel value="Academic Level" />
+
                 <Select
                   value={selected}
                   onChange={change}
                   options={options}
                   isSearchable={true}
-                  placeholder="Select Grade"
+                  placeholder="Select Academic Level"
                   classNames={{
                     menuButton: ({ isDisabled }) =>
                       `flex mt-1 py-0.5 text-gray-500 border border-gray-300 rounded shadow-sm transition-all duration-300 focus:outline-none ${
@@ -116,6 +119,8 @@ export default function Create({ auth }) {
                       }`,
                   }}
                 />
+
+                <InputError className="mt-2" message={errors.section} />
               </div>
 
               <PrimaryButton disabled={processing}>Create</PrimaryButton>

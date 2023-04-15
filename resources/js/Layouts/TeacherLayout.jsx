@@ -10,9 +10,7 @@ import {
 } from "@heroicons/react/20/solid";
 import Authenticated from "./AuthenticatedLayout";
 
-export default function Teacher({ auth, children }) {
-  const role = auth.user.role;
-
+export default function Teacher({ auth, teacher, children }) {
   return (
     <Authenticated user={auth.user}>
       <div className="flex">
@@ -29,7 +27,11 @@ export default function Teacher({ auth, children }) {
             <Sidebar.Item href="#" icon={UserGroupIcon}>
               Student Accounts
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={BuildingOfficeIcon}>
+            <Sidebar.Item
+              href={route("teachers.sections.index", teacher.id)}
+              active={route().current("teachers.sections.*")}
+              icon={BuildingOfficeIcon}
+            >
               Sections
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={EyeIcon}>

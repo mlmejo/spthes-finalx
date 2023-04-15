@@ -6,25 +6,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Section extends Model
+class Teacher extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'academic_level_id'];
+    protected $fillable = ['user_id'];
 
-    public function academic_level(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(AcademicLeveL::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function teachers(): BelongsToMany
+    public function sections(): BelongsToMany
     {
         return $this->belongsToMany(
-            Teacher::class,
+            Section::class,
             'registrations',
-            'section_id',
             'teacher_id',
+            'section_id',
         );
     }
 }

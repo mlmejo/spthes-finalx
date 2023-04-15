@@ -13,7 +13,10 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Sections/Index', [
+            'sections' => Section::with('academic_level:id,name')
+                ->get(),
+        ]);
     }
 
     /**
@@ -52,7 +55,10 @@ class SectionController extends Controller
      */
     public function edit(Section $section)
     {
-        //
+        $section = Section::with('academic_level:id,name')
+            ->findOrFail($section->id);
+
+        return Inertia::render('Sections/Edit', compact('section'));
     }
 
     /**
@@ -68,6 +74,8 @@ class SectionController extends Controller
      */
     public function destroy(Section $section)
     {
-        //
+        $section->delete();
+
+        return redirect()->route('sections.index');
     }
 }

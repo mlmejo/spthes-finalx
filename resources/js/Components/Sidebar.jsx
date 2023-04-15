@@ -27,7 +27,7 @@ const Item = ({ href, active, icon, children }) => {
           "group flex items-center rounded-lg p-2 align-middle " +
           `${
             active
-              ? "bg-gray-800 text-white hover:text-gray-900"
+              ? "bg-gray-800 text-white"
               : "text-gray-900 hover:bg-gray-800 hover:text-white"
           }`
         }
