@@ -4,9 +4,58 @@ import Dropdown from "@/Components/Dropdown";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 
-export default function Authenticated({ user, header, children }) {
+export default function Authenticated({
+  user,
+  student,
+  teacher,
+  header,
+  children,
+}) {
   const [showingNavigationDropdown, setShowingNavigationDropdown] =
     useState(false);
+
+  let nav_links;
+  if (teacher) {
+    nav_links = (
+      <div className="ml-5 space-y-2 md:hidden">
+        <div className="data">
+          <h1 className="font-semibold ">Records Data</h1>
+          <ResponsiveNavLink>Student Accounts</ResponsiveNavLink>
+          <ResponsiveNavLink
+            href={route("teachers.registrations.index", user.teacher.id)}
+          >
+            Sections
+          </ResponsiveNavLink>
+          <ResponsiveNavLink>View Takers</ResponsiveNavLink>
+        </div>
+      </div>
+    );
+  } else if (student) {
+    console.log("Student");
+  } else {
+    nav_links = (
+      <div className="ml-5 space-y-2 md:hidden">
+        <div className="data">
+          <h1 className="font-semibold ">Data</h1>
+          <ResponsiveNavLink href={route("students.index")}>
+            Accounts
+          </ResponsiveNavLink>
+          <ResponsiveNavLink href={route("sections.index")}>
+            Sections
+          </ResponsiveNavLink>
+        </div>
+        <div className="create">
+          <h1 className="font-semibold ">Create</h1>
+          <ResponsiveNavLink href={route("students.create")}>
+            Accounts
+          </ResponsiveNavLink>
+          <ResponsiveNavLink href={route("sections.create")}>
+            Sections
+          </ResponsiveNavLink>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -116,6 +165,9 @@ export default function Authenticated({ user, header, children }) {
               Dashboard
             </ResponsiveNavLink>
           </div>
+
+          {/* KANI AKO PASABOT */}
+          {nav_links}
 
           <div className="border-t border-gray-200 pb-1 pt-4">
             <div className="px-4">

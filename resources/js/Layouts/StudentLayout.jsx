@@ -11,7 +11,7 @@ import Authenticated from "./AuthenticatedLayout";
 
 export default function Student({ auth, children }) {
   return (
-    <Authenticated user={auth.user}>
+    <Authenticated user={auth.user} student={auth.student}>
       <div className="flex">
         <Sidebar role="Student">
           <Sidebar.Item href={route("dashboard")} icon={HomeIcon}>

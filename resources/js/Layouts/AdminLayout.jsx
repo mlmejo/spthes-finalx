@@ -14,7 +14,7 @@ export default function Admin({ auth, children }) {
 
   return (
     <Authenticated user={auth.user}>
-      <div className="flex">
+      <div className="md:flex">
         <Sidebar role="Administrator">
           <Sidebar.Item
             href={route("dashboard")}
@@ -61,7 +61,7 @@ export default function Admin({ auth, children }) {
             Activity Log
           </Sidebar.Item>
         </Sidebar>
-        <div className="w-full">{children}</div>
+        <div className="w-full md:ml-64 ">{children}</div>
       </div>
     </Authenticated>
   );

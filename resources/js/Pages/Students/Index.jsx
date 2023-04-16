@@ -9,48 +9,48 @@ export default function index({ auth, students }) {
       <div className="py-6">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8">
-            <div className="mb-4 border-b border-gray-200 text-center text-sm font-medium text-gray-800">
-              <ul className="-mb-px flex flex-wrap">
-                <li classname="mr-2">
-                  <a
-                    href={route("students.index")}
-                    classname={
-                      "inline-block rounded-t-lg border-b-2 border-transparent p-2 hover:border-indigo-300 hover:text-indigo-600 " +
-                      `${
-                        route().current("students.index")
-                          ? "border-indigo-300 text-indigo-600"
-                          : ""
-                      }`
-                    }
-                  >
-                    Students
-                  </a>
-                </li>
-                <li classname="mr-2">
-                  <a
-                    href={route("teachers.index")}
-                    classname={
-                      "inline-block rounded-t-lg border-b-2 border-transparent p-2 hover:border-indigo-300 hover:text-indigo-600 " +
-                      `${
-                        route().current("teachers.index")
-                          ? "border-indigo-300 text-indigo-600"
-                          : ""
-                      }`
-                    }
-                  >
-                    Teachers
-                  </a>
-                </li>
-              </ul>
-            </div>
-
             <header>
+              <div className="mb-4 border-b border-gray-200 text-center text-sm font-medium text-gray-800">
+                <ul className="-mb-px flex flex-wrap">
+                  <li className="mr-2">
+                    <a
+                      href={route("students.index")}
+                      className={
+                        "inline-block rounded-t-lg border-b-2 border-transparent p-2 hover:border-indigo-300 hover:text-indigo-600 " +
+                        `${
+                          route().current("students.index")
+                            ? "border-indigo-300 text-indigo-600"
+                            : ""
+                        }`
+                      }
+                    >
+                      Students
+                    </a>
+                  </li>
+                  <li className="mr-2">
+                    <a
+                      href={route("teachers.index")}
+                      className={
+                        "inline-block rounded-t-lg border-b-2 border-transparent p-2 hover:border-indigo-300 hover:text-indigo-600 " +
+                        `${
+                          route().current("teachers.index")
+                            ? "border-indigo-300 text-indigo-600"
+                            : ""
+                        }`
+                      }
+                    >
+                      Teachers
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
               <h2 className="text-lg font-medium text-gray-900">
                 Student Account List
               </h2>
             </header>
 
-            <div className="relatvie max-w-2xl overflow-x-auto pt-4 sm:rounded-lg">
+            <div className="relative max-w-2xl overflow-x-auto pt-4 sm:rounded-lg">
               <table className="w-full text-left text-sm text-gray-500">
                 <thead className="bg-gray-50 text-xs uppercase text-gray-700">
                   <tr>
