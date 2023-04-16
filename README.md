@@ -22,8 +22,10 @@ copy .env.example .env
 
 # Migrate database 
 
+Apply database seeding (initial data) as well.
+
 ```
-php artisan migrate
+php artisan migrate --seed
 ```
 
 # Generate application key
