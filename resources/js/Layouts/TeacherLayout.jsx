@@ -28,7 +28,7 @@ export default function Teacher({ auth, teacher, children }) {
               Student Accounts
             </Sidebar.Item>
             <Sidebar.Item
-              href={route("teachers.sections.index", teacher.id)}
+              href={route("teachers.registrations.index", teacher.id)}
               active={route().current("teachers.sections.*")}
               icon={BuildingOfficeIcon}
             >

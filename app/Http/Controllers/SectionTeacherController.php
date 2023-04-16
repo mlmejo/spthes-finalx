@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Registration;
 use App\Models\Section;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -12,9 +13,8 @@ class SectionTeacherController extends Controller
     public function index(Teacher $teacher)
     {
         return Inertia::render('Teachers/Sections/Index', [
-            'sections' => $teacher
-                ->sections()
-                ->with('academic_level:id,name')
+            'registrations' => $teacher->registrations()
+                ->with('section.academic_level')
                 ->get(),
             'teacher' => $teacher,
         ]);
@@ -33,10 +33,10 @@ class SectionTeacherController extends Controller
         return redirect()->route('sections.edit', $section);
     }
 
-    public function show(Teacher $teacher, Section $section)
+    public function show(Teacher $teacher, Registration $registration)
     {
         return Inertia::render('Teachers/Sections/Show', [
-            'section' => $section->with('academic_level:id,name')->first(),
+            'registration' => $registration->with('section.academic_level')->first(),
         ]);
     }
 }

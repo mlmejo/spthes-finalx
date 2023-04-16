@@ -12,10 +12,10 @@ export default function index({ auth, teachers }) {
             <header>
               <div className="mb-4 border-b border-gray-200 text-center text-sm font-medium text-gray-800">
                 <ul className="-mb-px flex flex-wrap">
-                  <li class="mr-2">
+                  <li className="mr-2">
                     <a
                       href={route("students.index")}
-                      class={
+                      className={
                         "inline-block rounded-t-lg border-b-2 border-transparent p-2 hover:border-indigo-300 hover:text-indigo-600 " +
                         `${
                           route().current("students.index")
@@ -27,10 +27,10 @@ export default function index({ auth, teachers }) {
                       Students
                     </a>
                   </li>
-                  <li class="mr-2">
+                  <li className="mr-2">
                     <a
                       href={route("teachers.index")}
-                      class={
+                      className={
                         "inline-block rounded-t-lg border-b-2 border-transparent p-2 hover:border-indigo-300 hover:text-indigo-600 " +
                         `${
                           route().current("teachers.index")

@@ -44,17 +44,21 @@ Route::post('sections/{section}/teachers', [SectionTeacherController::class, 'st
     ->middleware('auth')
     ->name('sections.teachers.store');
 
-Route::get('/teachers/{teacher}/sections', [SectionTeacherController::class, 'index'])
+Route::get('/teachers/{teacher}/registrations', [SectionTeacherController::class, 'index'])
     ->middleware('auth')
-    ->name('teachers.sections.index');
+    ->name('teachers.registrations.index');
 
-Route::get('/teachers/{teacher}/sections/{section}', [SectionTeacherController::class, 'show'])
+Route::get('/teachers/{teacher}/registrations/{registration}', [SectionTeacherController::class, 'show'])
     ->middleware('auth')
-    ->name('teachers.sections.show');
+    ->name('teachers.registrations.show');
 
-Route::get('/sections/{section}/exams/create', [ExamController::class, 'create'])
+Route::get('/registrations/{registration}/exams/create', [ExamController::class, 'create'])
     ->middleware('auth')
-    ->name('sections.exams.create');
+    ->name('registrations.exams.create');
+
+Route::post('/registrations/{registration}/exams', [ExamController::class, 'store'])
+    ->middleware('auth')
+    ->name('registrations.exams.store');
 
 require __DIR__ . '/admin.php';
 require __DIR__ . '/auth.php';

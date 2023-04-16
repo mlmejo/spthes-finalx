@@ -2,16 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Choice;
+use App\Models\Exam;
+use App\Models\Item;
+use App\Models\Registration;
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class ExamController extends Controller
 {
-    public function create(Section $section)
+    public function create(Registration $registration)
     {
         return Inertia::render('Exams/Create', [
-            'section' => $section->with('academic_level:id,name')->first(),
+            'registration' => $registration->with('section.academic_level')->first(),
         ]);
+    }
+
+    public function store(Request $request, Registration $registration)
+    {
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'sometimes',
+            'questions' => 'array',
+        ]);
+
+        $exam = Exam::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'deadline' => now(),
+            'registration_id' => $registration->id,
+        ]);
+
+        foreach ($request->questions as $question) {
+            $item = Item::create([
+                'question' => $question['question'],
+                'exam_id' => $exam->id,
+            ]);
+
+            foreach ($question['choices'] as $choice) {
+                Choice::create([
+                    'answer' => $choice['content'],
+                    'is_correct' => $choice['is_correct'],
+                    'item_id' => $item->id,
+                ]);
+            }
+        }
     }
 }

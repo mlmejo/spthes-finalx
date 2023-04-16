@@ -20,6 +20,11 @@ class Teacher extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function registrations(): HasMany
+    {
+        return $this->hasMany(Registration::class);
+    }
+
     public function sections(): BelongsToMany
     {
         return $this->belongsToMany(
