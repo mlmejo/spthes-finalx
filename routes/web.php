@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcademicLevelApiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionTeacherController;
 use App\Http\Controllers\TeacherApiController;
@@ -46,6 +47,14 @@ Route::post('sections/{section}/teachers', [SectionTeacherController::class, 'st
 Route::get('/teachers/{teacher}/sections', [SectionTeacherController::class, 'index'])
     ->middleware('auth')
     ->name('teachers.sections.index');
+
+Route::get('/teachers/{teacher}/sections/{section}', [SectionTeacherController::class, 'show'])
+    ->middleware('auth')
+    ->name('teachers.sections.show');
+
+Route::get('/sections/{section}/exams/create', [ExamController::class, 'create'])
+    ->middleware('auth')
+    ->name('sections.exams.create');
 
 require __DIR__ . '/admin.php';
 require __DIR__ . '/auth.php';

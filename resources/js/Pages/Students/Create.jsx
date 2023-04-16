@@ -45,10 +45,10 @@ export default function Create({ auth, sections }) {
             <header>
               <div className="mb-4 border-b border-gray-200 text-center text-sm font-medium text-gray-800">
                 <ul className="-mb-px flex flex-wrap">
-                  <li class="mr-2">
+                  <li className="mr-2">
                     <a
                       href={route("students.create")}
-                      class={
+                      className={
                         "inline-block rounded-t-lg border-b-2 border-transparent p-2 hover:border-indigo-300 hover:text-indigo-600 " +
                         `${
                           route().current("students.create")
@@ -60,10 +60,10 @@ export default function Create({ auth, sections }) {
                       Students
                     </a>
                   </li>
-                  <li class="mr-2">
+                  <li className="mr-2">
                     <a
                       href={route("teachers.create")}
-                      class={
+                      className={
                         "inline-block rounded-t-lg border-b-2 border-transparent p-2 hover:border-indigo-300 hover:text-indigo-600 " +
                         `${
                           route().current("teachers.create")

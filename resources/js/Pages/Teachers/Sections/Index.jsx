@@ -1,9 +1,9 @@
 import TeacherLayout from "@/Layouts/TeacherLayout";
 import { Head } from "@inertiajs/react";
 
-export default function Index({ auth, teacher, sections }) {
+export default function Index({ auth, sections }) {
   return (
-    <TeacherLayout auth={auth} teacher={teacher}>
+    <TeacherLayout auth={auth} teacher={auth.teacher}>
       <Head title="Your Sections" />
 
       <div className="py-6">
@@ -13,6 +13,10 @@ export default function Index({ auth, teacher, sections }) {
               return (
                 <a
                   key={section.id}
+                  href={route("teachers.sections.show", [
+                    auth.teacher.id,
+                    section.id,
+                  ])}
                   className="block w-full cursor-pointer bg-white p-6 shadow hover:shadow-lg sm:rounded-lg"
                 >
                   <h2 className="text-lg">{section.name}</h2>

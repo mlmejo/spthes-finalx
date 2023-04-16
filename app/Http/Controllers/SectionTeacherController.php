@@ -32,4 +32,11 @@ class SectionTeacherController extends Controller
 
         return redirect()->route('sections.edit', $section);
     }
+
+    public function show(Teacher $teacher, Section $section)
+    {
+        return Inertia::render('Teachers/Sections/Show', [
+            'section' => $section->with('academic_level:id,name')->first(),
+        ]);
+    }
 }
