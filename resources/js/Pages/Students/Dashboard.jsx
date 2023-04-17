@@ -48,6 +48,7 @@ export default function Dashboard({ auth }) {
 
       <div className="py-6">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <h2 className="mb-3 text-xl font-semibold">Section List</h2>
           <div className="grid gap-5 overflow-hidden bg-white shadow-sm sm:rounded-lg md:grid-cols-3">
             {sections.map((data, index) => {
               return (
@@ -56,6 +57,7 @@ export default function Dashboard({ auth }) {
                   key={index}
                   class="block max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
                 >
+                  <p className="section-title text-white">Section</p>
                   <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {data.name}
                   </h5>
