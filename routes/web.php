@@ -4,7 +4,10 @@ use App\Http\Controllers\AcademicLevelApiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegistrationApiController;
+use App\Http\Controllers\SectionRegistrationApiController;
 use App\Http\Controllers\SectionTeacherController;
+use App\Http\Controllers\StudentApiController;
 use App\Http\Controllers\TeacherApiController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +39,8 @@ Route::group([
     'middleware' => 'auth'
 ], function () {
     Route::resource('academic_levels', AcademicLevelApiController::class);
+    Route::resource('sections.registrations', SectionRegistrationApiController::class);
+    Route::resource('students', StudentApiController::class);
     Route::resource('teachers', TeacherApiController::class);
 });
 

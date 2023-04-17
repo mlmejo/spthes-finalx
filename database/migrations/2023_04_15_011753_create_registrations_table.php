@@ -13,13 +13,18 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('section_id')
                 ->constrained()
                 ->cascadeOnDelete();
+
             $table->foreignId('teacher_id')
                 ->constrained()
                 ->cascadeOnDelete();
+
             $table->timestamps();
+
+            $table->unique(['section_id', 'teacher_id']);
         });
     }
 

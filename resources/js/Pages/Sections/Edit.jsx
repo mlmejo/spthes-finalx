@@ -4,6 +4,7 @@ import UpdateSectionForm from "./Partials/UpdateSectionForm";
 import TeacherSelectionForm from "./Partials/TeacherSelectionForm";
 import DeleteSectionForm from "./Partials/DeleteSectionForm";
 import SectionContext from "./SectionContext";
+import StudentSelectionForm from "./Partials/StudentSelectionForm";
 
 export default function Edit({ auth, section }) {
   return (
@@ -19,6 +20,10 @@ export default function Edit({ auth, section }) {
 
             <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8">
               <TeacherSelectionForm />
+            </div>
+
+            <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8">
+              <StudentSelectionForm />
             </div>
 
             <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8">

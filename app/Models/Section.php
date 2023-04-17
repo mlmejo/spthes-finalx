@@ -28,4 +28,9 @@ class Section extends Model
             'teacher_id',
         );
     }
+
+    public function registrations(): HasMany
+    {
+        return $this->hasMany(Registration::class);
+    }
 }
