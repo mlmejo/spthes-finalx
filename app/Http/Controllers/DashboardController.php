@@ -16,7 +16,13 @@ class DashboardController extends Controller
         if ($request->user()->hasRole(Role::Admin->value)) {
             return Inertia::render('Admin/Dashboard');
         } else if ($request->user()->hasRole(Role::Student->value)) {
-            return Inertia::render('Students/Dashboard');
+            return Inertia::render('Students/Dashboard', [
+                'registrations' => $request->user()
+                    ->student
+                    ->registrations()
+                    ->with('section', 'teacher.user')
+                    ->get(),
+            ]);
         } else if ($request->user()->hasRole(Role::Teacher->value)) {
             return Inertia::render('Teachers/Dashboard');
         }

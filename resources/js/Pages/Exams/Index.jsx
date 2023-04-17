@@ -1,1 +1,1 @@
-export default function Index({ auth }) {}
+export default function Index({ auth, registration }) {}

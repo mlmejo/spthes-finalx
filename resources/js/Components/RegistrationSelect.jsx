@@ -9,12 +9,10 @@ export default function RegistrationSelect(props) {
     axios
       .get(route("api.sections.registrations.index", props.section.id))
       .then((response) => {
-        if (!response.length > 0) return;
-
         setOptions(
-          response.data.map((registration) => {
+          response.data.registrations.map((registration) => {
             return {
-              value: registration.teacher.id,
+              value: registration.id,
               label: registration.teacher.user.name,
             };
           })

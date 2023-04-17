@@ -11,7 +11,7 @@ class SectionRegistrationApiController extends Controller
     {
         return response()->json([
             'registrations' => $section->registrations()
-                ->with('registrations.teacher.user')
+                ->with('teacher.user')
                 ->get(),
         ]);
     }

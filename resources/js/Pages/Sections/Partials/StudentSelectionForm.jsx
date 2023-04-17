@@ -15,24 +15,28 @@ export default function StudentSelectionForm() {
     student_ids: [],
   });
 
-  const [teachers, setTeachers] = useState([]);
+  const [students, setStudents] = useState([]);
+
+  const [selectedRegistration, setSelectedRegistration] = useState(null);
+
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
   useEffect(() => {
     setData(
-      "teacher_ids",
-      teachers.map((teacher) => {
-        return teacher.id;
+      "student_ids",
+      students.map((student) => {
+        return student.id;
       })
     );
-  }, [teachers]);
+  }, [students]);
 
-  const change = (option) => {
-    const exists = teachers.some((teacher) => teacher.id === option.value);
+  const studentChange = (option) => {
+    const exists = students.some((student) => student.id === option.value);
 
     if (exists) return;
 
-    setTeachers([
-      ...teachers,
+    setStudents([
+      ...students,
       {
         id: option.value,
         name: option.label,
@@ -40,10 +44,15 @@ export default function StudentSelectionForm() {
     ]);
   };
 
+  const registrationChange = (option) => {
+    setData("registration_id", option.value);
+    setSelectedRegistration(option);
+  };
+
   const submit = (e) => {
     e.preventDefault();
 
-    post(route("sections.teachers.store", section));
+    post(route("sections.students.store", section));
   };
 
   return (
@@ -52,17 +61,23 @@ export default function StudentSelectionForm() {
         <h2 className="text-lg font-medium text-gray-900">Assign Student</h2>
       </header>
 
-      <form className="mt-4 space-y-4">
+      <form onSubmit={submit} className="mt-4 space-y-4">
         <div className="max-w-xl">
           <InputLabel value="Section Teachers" />
 
-          <RegistrationSelect section={section} />
+          <RegistrationSelect
+            section={section}
+            value={selectedRegistration}
+            onChange={registrationChange}
+          />
 
           <InputError className="mt-2" />
         </div>
 
         <div className="mt-4 max-w-xl">
           <InputLabel value="Students" />
+
+          <StudentSelect value={selectedStudent} onChange={studentChange} />
 
           <InputError className="mt-2" />
         </div>

@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/20/solid";
 import Authenticated from "./AuthenticatedLayout";
 
-export default function Teacher({ auth, teacher, children }) {
+export default function Teacher({ auth, children }) {
   return (
     <Authenticated user={auth.user}>
       <div className="flex">
@@ -28,7 +28,7 @@ export default function Teacher({ auth, teacher, children }) {
               Student Accounts
             </Sidebar.Item>
             <Sidebar.Item
-              href={route("teachers.registrations.index", teacher.id)}
+              href={route("teachers.registrations.index", auth.teacher.id)}
               active={route().current("teachers.sections.*")}
               icon={BuildingOfficeIcon}
             >

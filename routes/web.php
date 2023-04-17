@@ -65,5 +65,9 @@ Route::post('/registrations/{registration}/exams', [ExamController::class, 'stor
     ->middleware('auth')
     ->name('registrations.exams.store');
 
+Route::get('/registrations/{registration}/exams', [ExamController::class, 'index'])
+    ->middleware('auth')
+    ->name('registrations.exams.index');
+
 require __DIR__ . '/admin.php';
 require __DIR__ . '/auth.php';

@@ -10,7 +10,7 @@ export default function StudentSelect(props) {
       .get(route("api.students.index"))
       .then((response) => {
         setOptions(
-          response.data.map((student) => {
+          response.data.students.map((student) => {
             return { value: student.id, label: student.user.name };
           })
         );
