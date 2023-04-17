@@ -47,7 +47,7 @@ export default function Teacher({ auth, teacher, children }) {
             Activity Log
           </Sidebar.Item>
         </Sidebar>
-        <div className="w-full">{children}</div>
+        <div className="ml-64 w-full">{children}</div>
       </div>
     </Authenticated>
   );
