@@ -13,7 +13,6 @@ export default function Create({ auth, sections }) {
     email: "",
     password: "",
     password_confirmation: "",
-    section_id: "",
   });
 
   const [selected, setSelected] = useState(null);
@@ -157,40 +156,6 @@ export default function Create({ auth, sections }) {
                   message={errors.password_confirmation}
                   className="mt-2"
                 />
-              </div>
-
-              <div className="max-w-xl">
-                <InputLabel value="Section" />
-
-                <Select
-                  value={selected}
-                  onChange={change}
-                  options={sections.map((section) => {
-                    return {
-                      label: section.name,
-                      value: section.id,
-                    };
-                  })}
-                  isSearchable={true}
-                  placeholder="Select Section"
-                  classNames={{
-                    menuButton: ({ isDisabled }) =>
-                      `flex mt-1 py-0.5 text-gray-500 border border-gray-300 rounded shadow-sm transition-all duration-300 focus:outline-none ${
-                        isDisabled
-                          ? "bg-gray-200"
-                          : "bg-white hover:border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-500/20"
-                      }`,
-                    menu: "absolute z-10 w-full bg-white shadow-lg border rounded py-1 mt-1.5 text-gray-700",
-                    listItem: ({ isSelected }) =>
-                      `block transition duration-200 px-2 text-sm py-2 cursor-pointer select-none truncate rounded ${
-                        isSelected
-                          ? `text-white bg-indigo-500`
-                          : `text-gray-500 hover:bg-indigo-100 hover:text-indigo-500`
-                      }`,
-                  }}
-                />
-
-                <InputError message={errors.section_id} className="mt-2" />
               </div>
 
               <PrimaryButton disabled={processing}>Create</PrimaryButton>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Role;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\User;
@@ -41,7 +42,6 @@ class StudentController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Password::defaults()],
-            'section_id' => 'required|exists:sections,id',
         ]);
 
         $user = User::create([
@@ -52,8 +52,9 @@ class StudentController extends Controller
 
         Student::create([
             'user_id' => $user->id,
-            'section_id' => $request->section_id,
         ]);
+
+        $user->assignRole(Role::Student->value);
 
         return redirect()->route('students.create');
     }
