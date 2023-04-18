@@ -9,12 +9,13 @@ use App\Models\Registration;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class ExamController extends Controller
+class RegistrationExamController extends Controller
 {
     public function index(Registration $registration)
     {
-        return view('exams.index', [
-            'exams' => $registration->exams,
+        return Inertia::render('Exams/Index', [
+            'registration' => $registration->with('exams', 'section', 'teacher.user')
+                ->first(),
         ]);
     }
 
@@ -56,5 +57,12 @@ class ExamController extends Controller
         }
 
         return redirect()->route('teachers.registrations.show', $registration);
+    }
+
+    public function show(Registration $registration, Exam $exam)
+    {
+        return Inertia::render('Exams/Show', [
+            'exam' => $exam->with('items.choices')->first(),
+        ]);
     }
 }

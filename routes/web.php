@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationApiController;
+use App\Http\Controllers\RegistrationExamController;
 use App\Http\Controllers\SectionRegistrationApiController;
 use App\Http\Controllers\SectionTeacherController;
 use App\Http\Controllers\StudentApiController;
@@ -65,9 +66,12 @@ Route::post('/registrations/{registration}/exams', [ExamController::class, 'stor
     ->middleware('auth')
     ->name('registrations.exams.store');
 
-Route::get('/registrations/{registration}/exams', [ExamController::class, 'index'])
+Route::get('/registrations/{registration}/exams', [RegistrationExamController::class, 'index'])
     ->middleware('auth')
     ->name('registrations.exams.index');
+
+Route::resource('registrations.exams', RegistrationExamController::class)
+    ->middleware('auth');
 
 require __DIR__ . '/admin.php';
 require __DIR__ . '/auth.php';

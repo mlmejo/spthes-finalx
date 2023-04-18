@@ -61,7 +61,7 @@ export default function Admin({ auth, children }) {
             Activity Log
           </Sidebar.Item>
         </Sidebar>
-        <div className="  w-full md:ml-64">{children}</div>
+        <div className="w-full md:ml-64 md:mt-16">{children}</div>
       </div>
     </Authenticated>
   );

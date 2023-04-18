@@ -11,7 +11,6 @@ export default function StudentSelectionForm() {
   const section = useContext(SectionContext);
 
   const { setData, post, processing } = useForm({
-    registration_id: 0,
     student_ids: [],
   });
 
@@ -62,14 +61,13 @@ export default function StudentSelectionForm() {
   };
 
   const registrationChange = (option) => {
-    setData("registration_id", option.value);
     setSelectedRegistration(option);
   };
 
   const submit = (e) => {
     e.preventDefault();
 
-    post(route("sections.students.store", section));
+    post(route("registrations.students.store", selectedRegistration.value));
   };
 
   return (
