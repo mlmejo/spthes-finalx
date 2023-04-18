@@ -14,7 +14,7 @@ export default function Student({ auth, children }) {
     <Authenticated user={auth.user}>
       <div className="flex">
         <Sidebar role="Student">
-          <Sidebar.Item href={route("dashboard")} icon={HomeIcon}>
+          <Sidebar.Item href={route("dashboard")} active={route().current("dashboard")} icon={HomeIcon}>
             Dashboard
           </Sidebar.Item>
         </Sidebar>

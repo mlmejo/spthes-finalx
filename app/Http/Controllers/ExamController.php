@@ -6,13 +6,18 @@ use App\Models\Choice;
 use App\Models\Exam;
 use App\Models\Item;
 use App\Models\Registration;
-use App\Models\Section;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class ExamController extends Controller
 {
+    public function index(Registration $registration)
+    {
+        return view('exams.index', [
+            'exams' => $registration->exams,
+        ]);
+    }
+
     public function create(Registration $registration)
     {
         return Inertia::render('Exams/Create', [
