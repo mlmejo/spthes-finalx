@@ -9,11 +9,18 @@ import SectionContext from "../SectionContext";
 export default function TeacherSelectionForm() {
   const section = useContext(SectionContext);
 
-  const { data, setData, post, processing, errors } = useForm({
+  const { setData, post, processing, errors } = useForm({
     teacher_ids: [],
   });
 
-  const [teachers, setTeachers] = useState([]);
+  const [teachers, setTeachers] = useState([
+    ...section.registrations.map((registration) => {
+      return {
+        id: registration.teacher.id,
+        name: registration.teacher.user.name,
+      };
+    }),
+  ]);
 
   useEffect(() => {
     setData(

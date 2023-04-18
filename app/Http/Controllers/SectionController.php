@@ -43,19 +43,11 @@ class SectionController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Section $section)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Section $section)
     {
-        $section = Section::with('academic_level:id,name')
+        $section = Section::with('academic_level', 'registrations.teacher.user')
             ->findOrFail($section->id);
 
         return Inertia::render('Sections/Edit', compact('section'));

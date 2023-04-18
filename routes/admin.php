@@ -10,8 +10,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('sections', SectionController::class)
         ->middleware('auth');
 
-    Route::post('/sections/{section}/students', [RegistrationStudentsController::class, 'store'])
-        ->name('sections.students.store');
+    Route::resource('registrations.students', RegistrationStudentsController::class)
+        ->only(['index', 'store']);
 
     Route::resource('students', StudentController::class)
         ->middleware('auth');

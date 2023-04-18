@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class RegistrationStudentsController extends Controller
 {
+    public function index(Registration $registration)
+    {
+        return response()->json([
+            'students' => $registration->students()
+                ->with('user')
+                ->get(),
+        ]);
+    }
+
     public function store(Request $request, Registration $registration)
     {
         $request->validate([
