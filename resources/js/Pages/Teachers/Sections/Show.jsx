@@ -25,7 +25,25 @@ export default function show({ auth, registration }) {
             <h2 className="text-md mt-6 font-medium text-gray-800">
               Ongoing Examinations
             </h2>
+            <ul className="text-md mt-2 w-full rounded-lg border border-gray-200 bg-white font-medium text-gray-900">
+              {registration.exams.map((exam) => {
+                return (
+                  <li className="w-full border-b border-gray-200 px-4 py-2">
+                    {exam.title}
+                  </li>
+                );
+              })}
+            </ul>
             <h2 className="text-md mt-6 font-medium text-gray-800">Students</h2>
+            <ul className="text-md mt-2 w-full rounded-lg border border-gray-200 bg-white font-medium text-gray-900">
+              {registration.students.map((student) => {
+                return (
+                  <li className="w-full border-b border-gray-200 px-4 py-2">
+                    {student.user.name}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </div>

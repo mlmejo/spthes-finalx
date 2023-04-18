@@ -54,5 +54,7 @@ class ExamController extends Controller
                 ]);
             }
         }
+
+        return redirect()->route('teachers.registrations.show', $registration);
     }
 }

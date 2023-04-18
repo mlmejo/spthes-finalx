@@ -2,39 +2,6 @@ import TeacherLayout from "@/Layouts/TeacherLayout";
 import { Head } from "@inertiajs/react";
 
 export default function Index({ auth, registrations }) {
-  let sections = [
-    {
-      id: 1,
-      section_name: "Balagtas",
-      section_adviser: "Joshua Caalim",
-    },
-    {
-      id: 2,
-      section_name: "Balagtas",
-      section_adviser: "Joshua Caalim",
-    },
-    {
-      id: 3,
-      section_name: "Balagtas",
-      section_adviser: "Joshua Caalim",
-    },
-    {
-      id: 4,
-      section_name: "Balagtas",
-      section_adviser: "Joshua Caalim",
-    },
-    {
-      id: 5,
-      section_name: "Balagtas",
-      section_adviser: "Joshua Caalim",
-    },
-    {
-      id: 6,
-      section_name: "Balagtas",
-      section_adviser: "Joshua Caalim",
-    },
-  ];
-
   return (
     <TeacherLayout auth={auth} teacher={auth.teacher}>
       <Head title="Your Sections" />
@@ -61,21 +28,24 @@ export default function Index({ auth, registrations }) {
               );
             })} */}
 
-            {sections.map((data) => {
+            {registrations.map((registration) => {
               return (
-                <div
-                  href="#"
-                  key={data.id}
-                  class="block w-full rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                <a
+                  href={route("teachers.registrations.show", [
+                    registration.teacher.id,
+                    registration.id,
+                  ])}
+                  key={registration.id}
+                  class="block w-full rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100"
                 >
-                  <p className="section-title text-white">Section</p>
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {data.section_name}
+                  <p className="section-title text-gray-800">Section</p>
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                    {registration.section.name}
                   </h5>
-                  <p class="font-normal text-gray-700 dark:text-gray-400">
-                    Adviser {data.section_adviser}
+                  <p class="font-normal text-gray-700">
+                    Adviser: {registration.teacher.user.name}
                   </p>
-                </div>
+                </a>
               );
             })}
           </div>

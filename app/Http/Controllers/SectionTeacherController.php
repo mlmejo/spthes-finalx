@@ -14,7 +14,7 @@ class SectionTeacherController extends Controller
     {
         return Inertia::render('Teachers/Sections/Index', [
             'registrations' => $teacher->registrations()
-                ->with('section.academic_level')
+                ->with('section.academic_level', 'teacher.user')
                 ->get(),
             'teacher' => $teacher,
         ]);
@@ -36,7 +36,8 @@ class SectionTeacherController extends Controller
     public function show(Teacher $teacher, Registration $registration)
     {
         return Inertia::render('Teachers/Sections/Show', [
-            'registration' => $registration->with('section.academic_level')->first(),
+            'registration' => $registration->with('section.academic_level', 'exams', 'students.user')
+                ->first(),
         ]);
     }
 }
