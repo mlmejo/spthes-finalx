@@ -29,7 +29,9 @@ export default function show({ auth, registration }) {
               {registration.exams.map((exam) => {
                 return (
                   <li className="w-full border-b border-gray-200 px-4 py-2">
-                    {exam.title}
+                    <a href={route("exams.answers.index", exam.id)}>
+                      {exam.title}
+                    </a>
                   </li>
                 );
               })}

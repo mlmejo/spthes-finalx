@@ -56,7 +56,7 @@ class RegistrationExamController extends Controller
             }
         }
 
-        return redirect()->route('teachers.registrations.show', $registration);
+        return redirect()->route('teachers.registrations.show', [$registration->teacher, $registration]);
     }
 
     public function show(Registration $registration, Exam $exam)

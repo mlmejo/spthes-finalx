@@ -30,8 +30,8 @@ class Student extends Model
         return $this->belongsToMany(
             Registration::class,
             'registration_student',
-            'registration_id',
             'student_id',
+            'registration_id',
         );
     }
 }

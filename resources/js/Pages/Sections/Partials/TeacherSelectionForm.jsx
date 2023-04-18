@@ -9,7 +9,7 @@ import SectionContext from "../SectionContext";
 export default function TeacherSelectionForm() {
   const section = useContext(SectionContext);
 
-  const { setData, post, processing, errors } = useForm({
+  const { setData, post, processing, errors, reset } = useForm({
     teacher_ids: [],
   });
 
@@ -48,7 +48,9 @@ export default function TeacherSelectionForm() {
   const submit = (e) => {
     e.preventDefault();
 
-    post(route("sections.teachers.store", section));
+    post(route("sections.teachers.store", section), {
+      onSuccess: () => reset(),
+    });
   };
 
   return (

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcademicLevelApiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExamAnswerController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationApiController;
@@ -71,6 +72,9 @@ Route::get('/registrations/{registration}/exams', [RegistrationExamController::c
     ->name('registrations.exams.index');
 
 Route::resource('registrations.exams', RegistrationExamController::class)
+    ->middleware('auth');
+
+Route::resource('exams.answers', ExamAnswerController::class)
     ->middleware('auth');
 
 require __DIR__ . '/admin.php';

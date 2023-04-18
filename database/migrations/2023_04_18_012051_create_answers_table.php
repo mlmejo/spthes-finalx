@@ -20,7 +20,13 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->string('answer');
+            $table->unsignedBigInteger('answer');
+
+            $table->foreign('answer')
+                ->references('id')
+                ->on('choices')
+                ->constrained();
+
             $table->timestamps();
         });
     }

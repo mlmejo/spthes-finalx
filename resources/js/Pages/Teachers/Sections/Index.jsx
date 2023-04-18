@@ -36,13 +36,13 @@ export default function Index({ auth, registrations }) {
                     registration.id,
                   ])}
                   key={registration.id}
-                  class="block w-full rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100"
+                  className="block w-full rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100"
                 >
                   <p className="section-title text-gray-800">Section</p>
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                     {registration.section.name}
                   </h5>
-                  <p class="font-normal text-gray-700">
+                  <p className="font-normal text-gray-700">
                     Adviser: {registration.teacher.user.name}
                   </p>
                 </a>
