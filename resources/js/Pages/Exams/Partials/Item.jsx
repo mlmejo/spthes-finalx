@@ -52,11 +52,11 @@ export default function Item({ id, data, dispatcher }) {
       ...data.filter((el) => {
         return el.id !== item.id;
       }),
-      {...item, question: e.target.value}
+      { ...item, question: e.target.value },
     ];
 
     dispatcher(newData);
-  }
+  };
 
   return (
     <div className="grow bg-white p-4 shadow sm:rounded-lg sm:p-8">
