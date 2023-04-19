@@ -34,4 +34,9 @@ class Student extends Model
             'registration_id',
         );
     }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

@@ -10,7 +10,7 @@ class Answer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['student_id', 'item_id', 'answer'];
+    protected $fillable = ['student_id', 'item_id', 'answer', 'exam_id'];
 
     public function student(): BelongsTo
     {

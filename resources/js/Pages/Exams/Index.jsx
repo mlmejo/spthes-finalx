@@ -1,7 +1,7 @@
 import StudentLayout from "@/Layouts/StudentLayout";
 import { Head } from "@inertiajs/react";
 
-export default function Dashboard({ auth, registration }) {
+export default function Dashboard({ auth, registration, student }) {
   return (
     <StudentLayout auth={auth}>
       <Head title="Dashboard" />
@@ -16,6 +16,10 @@ export default function Dashboard({ auth, registration }) {
 
           <div className="grid gap-5 overflow-hidden shadow-sm sm:rounded-lg md:grid-cols-3">
             {registration.exams.map((exam) => {
+              const exists = student.answers.some((answer) => answer.exam_id === exam.id);
+
+              if (exists) return;
+
               return (
                 <a
                   href={route("registrations.exams.show", [
