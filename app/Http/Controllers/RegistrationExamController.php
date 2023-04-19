@@ -15,8 +15,8 @@ class RegistrationExamController extends Controller
     {
         return Inertia::render('Exams/Index', [
             'registration' => $registration->with('exams', 'section', 'teacher.user')
-                ->first(),
-            'student' => $request->user()->student->with('answers')->first(),
+                ->find($registration->id),
+            'student' => $request->user()->student->with('answers')->find($request->user()->student->id),
         ]);
     }
 
@@ -63,7 +63,7 @@ class RegistrationExamController extends Controller
     public function show(Registration $registration, Exam $exam)
     {
         return Inertia::render('Exams/Show', [
-            'exam' => $exam->with('items.choices')->first(),
+            'exam' => $exam->with('items.choices')->find($exam->id),
         ]);
     }
 }

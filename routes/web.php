@@ -73,10 +73,10 @@ Route::get('/registrations/{registration}/exams', [RegistrationExamController::c
     ->name('registrations.exams.index');
 
 Route::resource('registrations.exams', RegistrationExamController::class)
-    ->middleware(['auth', 'check.role:student']);
+    ->middleware(['auth']);
 
 Route::resource('exams.answers', ExamAnswerController::class)
-    ->middleware(['auth', 'check.role:student']);
+    ->middleware('auth');
 
 Route::get('/registrations/{registration}/exam/import', [ExamUploadController::class, 'create'])
     ->middleware(['auth', 'check.role:teacher'])

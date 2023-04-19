@@ -56,6 +56,7 @@ export default function Show({ auth, exam }) {
                           onChange={handleChangeAnswer}
                           name={`item-${item.id}}`}
                           className="h-4 w-4 border-gray-300 bg-gray-100 text-indigo-600 focus:ring-2 focus:ring-indigo-500"
+                          required
                         />
                         <label
                           htmlFor={`item-${item.id}-choice-${index}`}

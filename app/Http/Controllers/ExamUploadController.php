@@ -24,7 +24,7 @@ class ExamUploadController extends Controller
         $request->validate([
             'document' => 'required',
             'title' => 'required',
-            'description' => 'required',
+            'description' => 'sometimes',
         ]);
 
         $file = $request->file('document');

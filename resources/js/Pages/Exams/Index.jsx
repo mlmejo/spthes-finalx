@@ -16,7 +16,7 @@ export default function Dashboard({ auth, registration, student }) {
 
           <div className="grid gap-5 overflow-hidden shadow-sm sm:rounded-lg md:grid-cols-3">
             {registration.exams.map((exam) => {
-              const exists = student.answers.some((answer) => answer.exam_id === exam.id);
+              const exists = student.answers.some((answer) => { return answer.exam_id === exam.id });
 
               if (exists) return;
 

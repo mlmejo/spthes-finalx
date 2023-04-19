@@ -73,7 +73,7 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         return Inertia::render('Students/Edit', [
-            'student' => $student->with('user:id,name,email')->first(),
+            'student' => $student->with('user:id,name,email')->find($student->id),
             'sections' => Section::orderBy('name')->get(),
         ]);
     }

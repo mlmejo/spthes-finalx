@@ -70,7 +70,7 @@ class TeacherController extends Controller
     public function edit(Teacher $teacher)
     {
         return Inertia::render('Teachers/Edit', [
-            'teacher' => $teacher->with('user:id,name,email')->first(),
+            'teacher' => $teacher->with('user:id,name,email')->find($teacher->id),
             // 'sections' => Section::orderBy('name')->get(),
         ]);
     }
@@ -88,7 +88,7 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        $teacher->user->destroy();
+        $teacher->user->delete();
 
         return redirect()->route('teachers.index');
     }
