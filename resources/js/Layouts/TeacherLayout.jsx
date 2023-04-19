@@ -24,9 +24,9 @@ export default function Teacher({ auth, children }) {
           </Sidebar.Item>
 
           <Sidebar.Collapse icon={CircleStackIcon} label="Records Data">
-            <Sidebar.Item href="#" icon={UserGroupIcon}>
+            {/* <Sidebar.Item href="#" icon={UserGroupIcon}>
               Student Accounts
-            </Sidebar.Item>
+            </Sidebar.Item> */}
             <Sidebar.Item
               href={route("teachers.registrations.index", auth.teacher.id)}
               active={route().current("teachers.sections.*")}
@@ -34,9 +34,9 @@ export default function Teacher({ auth, children }) {
             >
               Sections
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={EyeIcon}>
+            {/* <Sidebar.Item href="#" icon={EyeIcon}>
               View Takers
-            </Sidebar.Item>
+            </Sidebar.Item> */}
           </Sidebar.Collapse>
 
           <Sidebar.Item href="#" icon={PlusIcon}>

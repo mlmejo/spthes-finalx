@@ -6,7 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->group(function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'check.role:admin']], function () {
     Route::resource('sections', SectionController::class)
         ->middleware('auth');
 
