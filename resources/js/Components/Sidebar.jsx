@@ -3,7 +3,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 const Sidebar = ({ role, children }) => {
   return (
     <div
-      className="fixed left-0 top-16 z-40 h-screen w-64 -translate-x-full transition-transform sm:translate-x-0"
+      className="z-40 h-screen -translate-x-full transition-transform sm:translate-x-0 md:fixed md:left-0 md:top-16 md:w-64"
       aria-label="Sidebar"
     >
       <div className="h-full overflow-y-auto bg-white px-3 py-4">

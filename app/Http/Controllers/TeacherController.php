@@ -69,7 +69,10 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        return Inertia::render('Teachers/Edit', compact('teacher'));
+        return Inertia::render('Teachers/Edit', [
+            'teacher' => $teacher->with('user:id,name,email')->first(),
+            // 'sections' => Section::orderBy('name')->get(),
+        ]);
     }
 
     /**
