@@ -78,7 +78,6 @@ export default function StudentSelectionForm() {
       </header>
 
       <form onSubmit={submit} className="mt-4 space-y-4">
-        <h1>Oten</h1>
         <div className="max-w-xl">
           <InputLabel value="Section Teachers" />
 

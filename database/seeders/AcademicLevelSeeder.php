@@ -14,6 +14,13 @@ class AcademicLevelSeeder extends Seeder
      */
     public function run(): void
     {
+        for ($i = 1; $i < 7; $i++) {
+            DB::table('academic_levels')->insert([
+                'name' => "Grade $i",
+                'tier' => AcademicTier::Primary->value,
+            ]);
+        }
+
         for ($i = 7; $i < 11; $i++) {
             DB::table('academic_levels')->insert([
                 'name' => "Grade $i",
@@ -25,18 +32,6 @@ class AcademicLevelSeeder extends Seeder
             DB::table('academic_levels')->insert([
                 'name' => "Grade $i",
                 'tier' => AcademicTier::SeniorHigh,
-            ]);
-        }
-
-        foreach ([
-            'First Year',
-            'Second Year',
-            'Third Year',
-            'Fourth Year',
-        ] as $name) {
-            DB::table('academic_levels')->insert([
-                'name' => $name,
-                'tier' => AcademicTier::College,
             ]);
         }
     }

@@ -71,6 +71,7 @@ class ExamAnswerController extends Controller
                 'student_id' => $request->student_id,
                 'item_id' => $answer['id'],
                 'answer' => $answer['value'],
+                'exam_id' => $exam,
             ]);
         }
 

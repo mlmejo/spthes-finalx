@@ -20,16 +20,16 @@ export default function AcademicLevelSelect(props) {
       .then((response) => {
         setOptions([
           {
-            label: "Junior High",
+            label: "Primary School",
+            options: parseAsOpts(response.data.primary),
+          },
+          {
+            label: "Junior High School",
             options: parseAsOpts(response.data.jhs),
           },
           {
             label: "Senior High School",
             options: parseAsOpts(response.data.shs),
-          },
-          {
-            label: "College",
-            options: parseAsOpts(response.data.college),
           },
         ]);
       })

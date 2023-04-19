@@ -20,7 +20,6 @@ export default function Edit({ auth, student }) {
     });
   };
 
-  console.log(student);
   return (
     <AdminLayout auth={auth}>
       <Head title="Edit Student Information" />

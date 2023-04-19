@@ -49,7 +49,7 @@ export default function TeacherSelectionForm() {
     e.preventDefault();
 
     post(route("sections.teachers.store", section), {
-      onSuccess: () => reset(),
+      onSuccess: () => window.location.reload(true),
     });
   };
 

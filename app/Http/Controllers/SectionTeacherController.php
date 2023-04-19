@@ -37,7 +37,7 @@ class SectionTeacherController extends Controller
     {
         return Inertia::render('Teachers/Sections/Show', [
             'registration' => $registration->with('section.academic_level', 'exams', 'students.user')
-                ->first(),
+                ->find($registration->id),
         ]);
     }
 }

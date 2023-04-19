@@ -34,7 +34,16 @@ export default function Create({ auth }) {
       .then((response) => {
         setOptions([
           {
-            label: "Junior High",
+            label: "Primary School",
+            options: response.data.primary.map((item) => {
+              return {
+                value: item.id,
+                label: item.name,
+              };
+            }),
+          },
+          {
+            label: "Junior High School",
             options: response.data.jhs.map((item) => {
               return {
                 value: item.id,
@@ -45,15 +54,6 @@ export default function Create({ auth }) {
           {
             label: "Senior High School",
             options: response.data.shs.map((item) => {
-              return {
-                value: item.id,
-                label: item.name,
-              };
-            }),
-          },
-          {
-            label: "College",
-            options: response.data.college.map((item) => {
               return {
                 value: item.id,
                 label: item.name,

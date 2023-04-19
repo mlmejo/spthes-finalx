@@ -11,11 +11,12 @@ use Inertia\Inertia;
 
 class RegistrationExamController extends Controller
 {
-    public function index(Registration $registration)
+    public function index(Request $request, Registration $registration)
     {
         return Inertia::render('Exams/Index', [
             'registration' => $registration->with('exams', 'section', 'teacher.user')
                 ->first(),
+            'student' => $request->user()->student->with('answers')->first(),
         ]);
     }
 

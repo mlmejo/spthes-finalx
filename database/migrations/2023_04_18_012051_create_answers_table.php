@@ -20,6 +20,10 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
+            $table->foreignId('exam_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
             $table->unsignedBigInteger('answer');
 
             $table->foreign('answer')
